@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Signika+Negative:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.parent{
+    background-color: white;
+}
+.main{
+    height: 900px;
+}
+.main_row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+h1, h2{
+    font-family: 'Roboto', sans-serif;
+}
+p{
+    font-family: 'Signika Negative', sans-serif
+}
+form{
+    font-family: 'Signika Negative', sans-serif
+}
+.a{
+    text-decoration: none;
+
+}

@@ -1,0 +1,31 @@
+<section>
+    <div class="container col-md-12 col-12 col-sm-12  main ">
+        <div class="parent mt-5 ">
+            <div class="row main_row">
+                <div class="col-md-6 col-sm-6 mt-5 ">
+                    <h1 class="text-center">Welcome back ! </h1>
+                    <p class="text-center">Please login to continue the banking..</p>
+                    <img src="assets/login-images/login.gif" alt="" class="img-fluid" alt="gif">
+                </div>
+                <div class="col-md-6 col-12 col-sm-12  ">
+                    <h2 class="text-center mb-2">Login to Bank</h2>
+                    <p class="text-center mb-5">Doesn't have an account yet? <a class="a" routerLink="register">Create account</a></p>
+                    <form class="form-group col-md-7 col-sm-10 col-10 mb-5 ms-auto me-auto" (ngSubmit)="login()">
+                        <div class="mb-4">
+                            <input type="number" [(ngModel)]="accno" name="accno" id="accno" class="form-control p-3 shadow"
+                                [placeholder]="value" style="border-radius: 15px;" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="password" [(ngModel)]="pswd" name="pswd" id="password" class="form-control p-3 shadow"
+                                placeholder="Password" style="border-radius: 15px;" required>
+                        </div>
+                        <div class="mb-4 ">
+                            <button type="submit" style="border-radius: 15px;"  class="btn btn-outline-primary shadow-lg text-center p-3 col-md-12 col-12 ">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,54 @@
+<section>
+    <div class="container col-md-12 col-12  main" >
+        <div class="parent  mt-5">
+            <div class="row main_row">
+                <div class="col-md-6 mt-5 mb-5 ">
+                    <h1 class="text-center">Welcome ! Register here.</h1>
+                    <p class="text-center">Please register to continue the banking..</p>
+                    <img src="assets/register-images/register.gif" alt="" class="img-fluid">
+                   
+                </div>
+                <div class="col-md-6 col-12   ">
+                    
+                        <h2 class="text-center mb-2">Signup to Bank</h2>
+                    <p class="text-center mb-5">Already have an account? <a class="a" routerLink="">Sign In</a></p>
+                    <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-group col-md-7 col-10 mb-5 ms-auto me-auto">
+                        <div class="mb-4">
+                            <input type="text" formControlName="uname" name="fullname" id="fullname" class="form-control p-3 shadow " 
+                             placeholder="Full name" style="border-radius: 15px;" >
+
+                             <p *ngIf="(this.registerForm.get('uname')?.touched || this.registerForm.get('uname')?.dirty ) && this.registerForm.get('uname')?.errors"
+                              class="text-danger mt-3  text-center">
+                                 <b>! </b>Invalid username
+                            </p>
+                        </div>
+                        <div class="mb-4">
+                            <input type="number" formControlName="accno" name="accno" id="accno" class="form-control p-3 shadow" required
+                             placeholder="Account number" style="border-radius: 15px;" >
+                             <p *ngIf="(this.registerForm.get('accno')?.touched || this.registerForm.get('accno')?.dirty ) && this.registerForm.get('accno')?.errors"
+                             class="text-danger mt-3  text-center">
+                                <b>! </b>Invalid Account number
+                           </p>
+                        </div>
+                        <div class="mb-4">
+                            <input type="password" formControlName="pswd" name="pswd" id="pass" class="form-control p-3 shadow" required
+                             placeholder="Password" style="border-radius: 15px;"  >
+                             <p *ngIf="(this.registerForm.get('pswd')?.touched || this.registerForm.get('pswd')?.dirty ) && this.registerForm.get('pswd')?.errors"
+                             class="text-danger mt-3  text-center">
+                                <b>! </b>Invalid Password
+                           </p>
+                        </div>
+                        
+                        <div class="mb-4 ">
+                           <button class="btn btn-outline-primary text-center p-3 col-md-12 col-12 shadow "
+                           style="border-radius: 15px;" >Register</button>
+                        </div>
+                    </form>
+                  
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>

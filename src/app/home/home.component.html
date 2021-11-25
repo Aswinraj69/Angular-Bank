@@ -1,0 +1,172 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light  ">
+      <div class="container">
+        <a class="navbar-brand " href="#"><span class="h2 " style="font-family: 'Lobster', cursive; color: #5d95fd;">Bank</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  justify-content-between" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+            <li class="nav-item ">
+              <a class="nav-link active " aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" id="balance1" href="#"  onclick="bank.checkBalance()">Balance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" id="fund_transfer"  data-bs-toggle="modal" data-bs-target="#exampleModal">Deposit</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" id="withdraw"  data-bs-toggle="modal" data-bs-target="#withdrawModal">Withdraw</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <button class="btn btn-outline-dark " id="logout" onclick="bank.logout()">Logout</button>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Online transaction</h6><br>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group col-md-12 p-5 col-12">
+          <h5 class="text-center ">Deposit</h5>
+          <div class="d-flex justify-content-center">
+            <img src="assets/landing-images/transfer.gif" alt="" class="img-fluid col-md-12 " style="width: 50%; height: 200px;">
+          </div>
+          <form (ngSubmit)="deposit()"   >
+            <div class="mb-3">
+              <input type="number" placeholder="Account number" id="acno1" name="acno" [(ngModel)]="acno1" class="form-control col-md-12">
+            </div>
+            <div class="mb-3">
+              <input type="password" placeholder="password" id="pass1" name="pass" [(ngModel)]="pass1" class="form-control col-md-12">
+            </div>
+            <div class="mb-3">
+              <input type="number" placeholder="Amount" id="amnt1" name="amnt" [(ngModel)]="amnt1" class="form-control col-md-12">
+            </div>
+            <div class="mb-5">
+              <button type="submit" class="btn btn-outline-primary col-md-12 col-12" data-bs-dismiss="modal" >Deposit</button>
+            </div>
+          </form> 
+          <div class="d-flex justify-content-between">
+            <a class="text-left text-muted" style="text-decoration: none;">Learn more</a>
+            <a href="#" class="text-right text-muted" style="text-decoration: none;" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Withdraw</h6><br>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group col-md-12 p-5 col-12">
+            <h5 class="text-center ">Withdraw Money</h5>
+            <div class="d-flex justify-content-center">
+              <img src="assets/landing-images/transfer.gif" alt="" class="img-fluid col-md-12 " style="width: 50%; height: 200px;">
+            </div>
+            <form (ngSubmit)="withdraw()">
+              <div class="mb-3">
+                <input type="number" placeholder="Account number" id="acno2" name="acno2" [(ngModel)]="acno2" class="form-control col-md-12">
+              </div>
+              <div class="mb-3">
+                <input type="password" placeholder="Password" id="pass2" name="pass2" [(ngModel)]="pass2" class="form-control col-md-12">
+              </div>
+              <div class="mb-3">
+                <input type="number" placeholder="Amount" id="amnt2" name="amnt2" name="amnt2" [(ngModel)]="amnt2" class="form-control col-md-12">
+              </div>
+              <div class="mb-5">
+                <button  class="btn btn-outline-primary col-md-12 col-12" type="submit" data-bs-dismiss="modal"> Withdraw</button>
+              </div>
+            </form>
+            <div class="d-flex justify-content-between">
+              <a class="text-left text-muted" style="text-decoration: none;">Learn more</a>
+              <a href="#" class="text-right text-muted" style="text-decoration: none;" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <section id="land_page">
+    <div class="container mt-5 col-md-12 col-12"  >
+      <div class="row align-items-center">
+        <div class="col-md-6 col-12">
+          <h1 class="fw-bold ">Welcome to Bank!</h1>
+          <p class="mt-3 col-md-11 " >Its has been many years of providing best services and make customer more joyful. Thanks to be a part of
+            our bank.</p>
+        </div>
+        <div class="col-md-6 col-12">
+          <img src="assets/landing-images/home.gif" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="balance" style="display: none;">
+    <div class="container mt-5 col-md-12 col-12"  >
+      <div class="row align-items-center">
+        <div class="col-md-6 col-12">
+          <p class="mt-3 col-md-12 text-center " >Your available balance is</p>
+            <h1 class="fw-bold text-center col-12" id="balance_amnt" style="font-size: 90px;">$890.00</h1>
+        </div>
+        <div class="col-md-6 col-12">
+          <img src="assets/landing-images/balance.gif" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+<footer>
+  <div class="container-fluid bg-light">
+    <div class="container p-4">
+      <div class="row  col-md-12 col-12 ">
+      
+        <div class="col-md-3 col-12">
+          <p class="text-center "><a href="" style="text-decoration: none;color: black;">© Copyright Bank</a></p>
+          <p class="text-center">
+            <a href=""  style="text-decoration: none;color: black;">
+            <i class="fab fa-instagram p-1"></i> 
+            <i class="fab fa-google p-1"></i>
+            <i class="fab fa-linkedin-in p-1"></i>
+            <i class="fab fa-facebook-square p-1"></i>
+          </a>
+        </p>
+        </div>
+        <div class="col-md-3 col-12">
+          <p class="text-center "><a href="#" style="text-decoration: none;color: black;">About Bank</a></p>
+          
+        </div>
+        <div class="col-md-3 col-12">
+          <p class="text-center t"> <a href="" style="text-decoration: none;color: black;">Branch Locator</a> </p>
+        </div>
+        <div class="col-md-3 col-12">
+          <p class="text-center t"> <a href="" style="text-decoration: none;color: black;">Privacy terms</a> </p>
+        </div>
+      </div>
+   
+        <p class="text-center mb-0 text-muted ">All rights reserved @ Adarsh sathyan | 2021</p>
+   
+    </div>
+  </div>
+
+</footer>
