@@ -10,14 +10,22 @@
                 <div class="col-md-6 col-12 col-sm-12  ">
                     <h2 class="text-center mb-2">Login to Bank</h2>
                     <p class="text-center mb-5">Doesn't have an account yet? <a class="a" routerLink="register">Create account</a></p>
-                    <form class="form-group col-md-7 col-sm-10 col-10 mb-5 ms-auto me-auto" (ngSubmit)="login()">
+                    <form class="form-group col-md-7 col-sm-10 col-10 mb-5 ms-auto me-auto" [formGroup]="loginForm" (ngSubmit)="login()">
                         <div class="mb-4">
-                            <input type="number" [(ngModel)]="accno" name="accno" id="accno" class="form-control p-3 shadow"
-                                [placeholder]="value" style="border-radius: 15px;" required>
+                            <input type="number"formControlName="accno" name="accno" id="accno" class="form-control p-3 shadow"
+                                placeholder="enter account number" style="border-radius: 15px;" required>
+                                <p *ngIf="(this.loginForm.get('accno')?.touched || this.loginForm.get('accno')?.dirty ) && this.loginForm.get('accno')?.errors"
+                                class="text-danger mt-3  text-center">
+                                   <b>! </b>Invalid username
+                              </p>
                         </div>
                         <div class="mb-4">
-                            <input type="password" [(ngModel)]="pswd" name="pswd" id="password" class="form-control p-3 shadow"
+                            <input type="password" formControlName="pswd" name="pswd" id="password" class="form-control p-3 shadow"
                                 placeholder="Password" style="border-radius: 15px;" required>
+                                <p *ngIf="(this.loginForm.get('pswd')?.touched || this.loginForm.get('pswd')?.dirty ) && this.loginForm.get('pswd')?.errors"
+                                class="text-danger mt-3  text-center">
+                                   <b>! </b>Invalid password
+                              </p>
                         </div>
                         <div class="mb-4 ">
                             <button type="submit" style="border-radius: 15px;"  class="btn btn-outline-primary shadow-lg text-center p-3 col-md-12 col-12 ">Login</button>
@@ -29,3 +37,12 @@
 
     </div>
 </section>
+<footer class="p-5  bg-light text-center position-relative">
+    <div class="container ">
+      <p class="lead">Copyright & copy; 2021 Official <span class="text-primary fw-bolder">Aswin</span></p>
+      <a > Term</a>
+      <a > Privacy</a>
+      <a > Licenses</a>
+      <span class=" cd border-start border-dark ms-1"> <span class="ms-2 text-primary ">aswinrajan6969@gmail.com</span > </span>
+    </div>
+  </footer>

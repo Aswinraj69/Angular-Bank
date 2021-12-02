@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -16,36 +17,60 @@ export class HomeComponent implements OnInit {
   pass2="";
   amnt2="";
  
-  constructor(private ds:DataService) { }
+  depositForm=this.fb.group({
+    
+    acno1:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pass1:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+    amnt1:['',[Validators.required,Validators.pattern('[0-9]*')]],
+  })
+
+  withdrawForm=this.fb.group({
+    acno2:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pass2:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+    amnt2:['',[Validators.required,Validators.pattern('[0-9]*')]],
+  })
+
+  user=this.ds.currentUser
+
+  constructor(private ds:DataService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   deposit(){
     
-    let acno=this.acno1;
-    let pass=this.pass1;
-    let amnt=this.amnt1;
+    let acno=this.depositForm.value.acno1;
+    let pass=this.depositForm.value.pass1;
+    let amnt=this.depositForm.value.amnt1;
+
+    if(this.depositForm.valid){
     let result = this.ds.deposit(acno,pass,amnt);
 
      if(result){
-      alert(`${amnt} is added successfully. Balance id ${result}`)
+      alert(`${amnt} is added successfully. Balance is ${result}`)
      }else{
        alert("Something went wrong")
      }
-  }
-
-  withdraw(){
-    let acno = this.acno2;
-    let pass = this.pass2;
-    let amnt = this.amnt2;
-    let result = this.ds.withdraw(acno, pass, amnt);
-    
-    if(result){
-      alert(`${amnt} have debited. Balance id ${result}`)
     }else{
-      alert("Something went wrong")
+      alert('invalid form')
     }
   }
 
+  withdraw(){
+    let acno = this.withdrawForm.value.acno2;
+    let pass = this.withdrawForm.value.pass2
+    let amnt = this.withdrawForm.value.amnt2
+
+  if(this.withdrawForm.valid){
+    let result = this.ds.withdraw(acno, pass, amnt);
+    
+    if(result){
+      alert(`${amnt} have debited. Balance is ${result}`)
+    }else{
+      alert("Something went wrong")
+    }
+  }else{
+  alert('invalid form')
+  }
+}
 }
